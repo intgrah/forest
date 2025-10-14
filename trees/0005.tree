@@ -13,5 +13,3 @@
     This is certainly not helped by the introduction of the Python \code{zlib} library, explicitly allowed by the rules, which is able to compress solutions over ~220 bytes. Such solutions look like
     \code{import zlib;exec(zlib.decompress(bytes(...)))}. Due to how the DEFLATE algorithm works, it often becomes beneficial to make programs \em{longer}, for better compressability.
 }
-
-\p{}

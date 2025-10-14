@@ -1,3 +1,9 @@
 \date{2025-10-14T04:38:50Z}
-\title{Crab Salsa}
+\title{Salsa}
 \meta{external}{https://github.com/salsa-rs/salsa}
+
+\p{
+    I'm testing the Salsa examples. I am sort of getting how it works.
+    It uses an accumulator pattern to track information and error messages, as it traverses data structures.
+    Everything is also tied to the database lifetime.
+}

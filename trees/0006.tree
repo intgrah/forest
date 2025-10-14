@@ -1,0 +1,8 @@
+\date{2025-10-14T03:58:19Z}
+\title{CUCaTS Code Golf Contest}
+\p{
+    I'm running a Code Golf contest for [CUCaTS](cucats) on 2025-10-20. This was inspired by a similar event ran by [UCCPS](uccps),
+    but I want to make the participant experience as smooth as possible. To do this, I'm using an online judge for this event, and potential future events.
+    Most judging software is designed specifically for competitive programming, thus, this judge had to be custom written.
+    Fortunately, a great tool [ioi/isolate](https://github.com/ioi/isolate) exists, which made the sandboxing job very easy.
+}

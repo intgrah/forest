@@ -1,0 +1,15 @@
+\date{2025-10-14T03:28:47Z}
+\title{Part II Project}
+\p{
+    I started my Part II Project, titled \em{Query-based incremental Elaborator for a Dependently Typed Language}. The project is supervised by [Jon Sterling](jonmsterling).
+    To summarise, the goal of the project is implement an incremental, query-based elaborator for a dependently typed toy language, for efficient type checking in interactive development environments, such as proof assistants.
+    The motivation for this, is that traditional type checkers for dependent types operate in batch mode, re-checking entire programs after each change.
+    The project will investigate bringing query-based compilation techniques to dependent type elaboration.
+}
+
+\p{
+    A query-based architecture decomposes type checking into \em{queries}, pure functions which can be memoised.
+    By tracking dependencies for these queries, we can save a lot of work by recomputing only the affected parts of the type checking process.
+}
+
+\transclude{0008}

@@ -1,0 +1,17 @@
+\date{2025-10-14T03:31:33Z}
+\title{NeurIPS 2025 Code Golf Championship}
+\meta{external}{https://www.kaggle.com/competitions/google-code-golf-2025}
+\p{
+    I have had some success participating in the NeurIPS 2025 Google Code Golf Championship.
+    The competition poses 400 problems from the ARC-AGI benchmark suite, and asks us to solve them in the fewest bytes of code.
+    My team consists of 5 Cambridge Computer Science students, with varying levels of commitment, but nevertheless we currently sit at a Gold Medal position, worth 5000 USD. Whether this holds, is a different question.
+}
+
+\p{
+    Each of the 400 problems require a solution in Python of the form \code{list[list[int]] -> list[list[int]]}. Problems could range from something like a Kronecker product, to a flood-fill algorithm, or some devious shape-sorting toy problem.
+    Since the ARC-AGI benchmark was never really intended to be a set of code golf problems, some problems inevitably end being quite terrible to golf, ending up with hundreds of bytes.
+    This is certainly not helped by the introduction of the Python \code{zlib} library, explicitly allowed by the rules, which is able to compress solutions over ~220 bytes. Such solutions look like
+    \code{import zlib;exec(zlib.decompress(bytes(...)))}. Due to how the DEFLATE algorithm works, it often becomes beneficial to make programs \em{longer}, for better compressability.
+}
+
+\p{}

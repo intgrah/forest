@@ -1,0 +1,43 @@
+\date{2025-11-11T11:15:00Z}
+\title{Elaborator and Unification}
+
+\p{
+    The elaborator now handles metavariable inference in application contexts. When type checking \code{id _ ()}, the hole \code{_} in the type argument position gets correctly unified with \code{Unit} based on the argument type. This works through the application inference rules in \code{elab.ml}:
+}
+
+\pre{\startverb
+    | App (f, a) ->
+    let f', f_ty = infer ctx names f in
+    let a_ty, b_clos =
+    match Eval.force f_ty with
+    | VPi (_, a, b) -> (a, b)
+    | _ ->
+    (* Not a Pi - insert metas and unify *)
+    let a_val = Eval.eval ctx.env (fresh_meta_ctx ctx) in
+    let b_tm = fresh_meta_ctx (Check.bind_var ctx a_val) in
+    let pi_ty = VPi ("_", a_val, Closure (ctx.env, b_tm)) in
+    unify_catch ctx pi_ty f_ty;
+    (* ... *)
+    \stopverb}
+
+\p{
+    When the function type is not immediately a Pi type, the elaborator inserts metavariables for both the domain and codomain, then unifies. \code{check ctx names a a_ty} checks the argument against the expected type, and unification propagates constraints back to the metavariables.
+}
+
+\p{
+    Values need to be forced before pattern matching. The type system represents metavariables lazily (\code{VFlex}), so after inference you get something that \em{evaluates to} \code{VUnit} but isn't immediately \code{VUnit}. The \code{Eval.force} function follows the metavariable solution chain:
+}
+
+\pre{\startverb
+    let rec force (v : val_ty) : val_ty =
+    match v with
+    | VFlex (m, sp) -> (
+    match meta m with
+    | VFlex (m', sp') -> force (apply_spine (VFlex (m', sp')) sp)
+    | v -> force (apply_spine v sp))
+    | v -> v
+    \stopverb}
+
+\p{
+    Metavariables need to be fully instantiated before structural inspection.
+}

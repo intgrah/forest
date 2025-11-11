@@ -1,0 +1,18 @@
+\date{2025-11-11T08:19:04Z}
+\title{Unifier}
+
+\p{
+    Fixed a bug in the pattern unification algorithm. The spine inversion was processing arguments in the wrong order, causing incorrect variable mappings. It turns out that \code{fold_left} and \code{fold_right} are different things.
+}
+
+\p{
+    Added tests for the elaborator using Alcotest. It structural equality for terms, despite variable names being preserved for pretty printing.
+}
+
+\p{
+    Fixed some minor issues with how metavariables were being looked up and forced during evaluation.
+}
+
+\p{
+    I have added bisect_ppx to measure test coverage.
+}

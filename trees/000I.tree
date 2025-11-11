@@ -1,0 +1,10 @@
+\date{2025-11-11T11:16:00Z}
+\title{Testing and Coverage}
+
+\p{
+    I added test coverage for the elaborator with a bisect_ppx instrumentation pass. Coverage is about 90%.
+}
+
+\p{
+    The test suite now has tests covering unification (e.g. Pi types, eta conversion, spine unification), evaluation (e.g. let bindings, metavariables), and elaboration (e.g. holes, implicit domain types in lambdas). Something like \code{id _ ()} test verifies metavariable inference across applications.
+}

@@ -1,0 +1,12 @@
+\date{2025-11-11T11:17:00Z}
+\title{Incrementalisation Steps}
+
+\p{
+    The elaborator seems to be in a reasonable state for simple dependent types.
+}
+
+\ol{
+    \li{Identifying the natural query boundaries (probably at definition boundaries, and maybe at subterm granularity)}
+    \li{Making the context explicit and immutable for each query}
+    \li{Representing source positions and dependencies explicitly}
+}

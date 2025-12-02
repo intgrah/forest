@@ -1,0 +1,30 @@
+\date{2025-12-02T09:01:00Z}
+\title{Incrementalisation with Jane Street Incremental}
+
+\p{
+Integrated Jane Street's [Incremental](https://github.com/janestreet/incremental) library as a proof of concept for reactive elaboration. The pipeline now watches source files and recomputes only invalidated stages when the source changes.
+}
+
+\p{
+    The architecture wraps each compilation stage (lexing, parsing, elaboration) as an incremental node with cutoffs based on structural equality. Changes propagate through the dependency graph, and observers log when stages are initialised, changed, or invalidated.
+}
+
+\pre{\startverb
+    let create () =
+    let source = Inc.Var.create "" in
+    let chars = Inc.map (Inc.Var.watch source) ~f:... in
+    let tokens = Inc.map chars ~f:try_lex in
+    Inc.set_cutoff tokens (Inc.Cutoff.of_equal ( = ));
+    let program = Inc.map tokens ~f:try_parse in
+    Inc.set_cutoff program (Inc.Cutoff.of_equal ( = ));
+    let elaborated = Inc.map program ~f:try_elaborate in
+    ...
+    \stopverb}
+
+\p{
+    Currently the incrementality is at the file level only, because I am yet to figure out how to construct dependency graphs at runtime, probably using the \code{bind} functions.
+}
+
+\p{
+    Note: Seeing that [ollef/sixten](https://github.com/ollef/sixten) uses the Haskell library [Rock](https://hackage.haskell.org/package/rock), I assume that is the minimum feature requirements needed. (It also defines queries with GADTs, which is nice).
+}

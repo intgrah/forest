@@ -1,0 +1,58 @@
+\date{2025-11-25}
+\title{Tarski formulation of MLTT}
+\meta{external}{https://live.lean-lang.org/#codez=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}
+
+\p{
+  The Tarski-style universe formulation of Martin-Löf Type Theory maintains a separation between types and terms. The type constructor \code{El} lifts a term of type \code{U} to an actual type, e.g. if \code{a : U} then \code{El(a) type}. Here is a the terms and types in Lean:
+}
+
+\pre{\startverb
+  mutual
+  inductive Ty : Nat -> Type where
+  | U : Ty n
+  | Pi : Ty n -> Ty (n + 1) -> Ty n
+  | Sigma : Ty n -> Ty (n + 1) -> Ty n
+  | El : Tm n -> Ty n
+  | Unit : Ty n
+  | Eq : Ty n -> Tm n -> Tm n -> Ty n
+
+  inductive Tm : Nat -> Type where
+  | var : Fin n -> Tm n
+  | pi : Tm n -> Tm (n + 1) -> Tm n
+  | sigma : Tm n -> Tm (n + 1) -> Tm n
+  | lambda : Tm (n + 1) -> Tm n
+  | app : Tm n -> Tm n -> Tm n
+  | mkSigma : Ty n -> Ty (n + 1) -> Tm n -> Tm n -> Tm n
+  | proj1 : Tm n -> Tm n
+  | proj2 : Tm n -> Tm n
+  | unit' : Tm n
+  | unit : Tm n
+  | eq : Tm n -> Tm n -> Tm n -> Tm n
+  | refl : Ty n -> Tm n -> Tm n
+  end
+  \stopverb}
+
+\p{
+  We also define a typing judgement and a well-formedness judgement for types.
+}
+
+\pre{\startverb
+  mutual
+  inductive HasType : Ctx n -> Tm n -> Ty n -> Prop where
+  | pi : (G |- a : U) -> (G; El a |- b : U) -> (G |- pi a b : U)
+  | lambda : (G |- A type) -> (G; A |- B type) ->
+  (G; A |- t : B) -> (G |- lambda t : Pi A B)
+  | app : (G |- f : Pi A B) -> (G |- a : A) -> (G |- f.app a : B[a])
+  ...
+
+  inductive IsType : Ctx n -> Ty n -> Prop where
+  | U : (G |- U type)
+  | El : (G |- A : U) -> (G |- El A type)
+  | Pi : (G |- A type) -> (G; A |- B type) -> (G |- Pi A B type)
+  ...
+  end
+  \stopverb}
+
+\p{
+  There are also term and type equality judgements (omitted). For example, type equality includes the decoding rules \code{El (pi a b) = Pi (El a) (El b)} and \code{El (sigma a b) = Sigma (El a) (El b)}. However, equality is implemented using NbE rather than from axioms.
+}

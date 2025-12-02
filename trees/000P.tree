@@ -1,0 +1,28 @@
+\date{2025-12-02T09:00:00Z}
+\title{Bidirectional Elaboration for Tarski Universes}
+
+\p{
+    I got bidirectional type checking for this Tarski eventually. All that has to be done is check whether a piece of syntax appears in term position or type position, and elaborate accordingly.
+}
+
+\p{
+    The \code{do_el} function implements the decoding of type codes during evaluation. When evaluating \code{TyEl t}, if \code{t} evaluates to a type code like \code{VTmPiHat}, it unfolds to the corresponding semantic type \code{VTyPi}. This implements the Tarski equations like \code{El(π(a, b)) ≡ Π(El(a), El(b))}.
+}
+
+\pre{\startverb
+    and do_el (env : env) : vl_tm → vl_ty = function
+    | VTmPiHat (x, a, ClosTm (env', b)) →
+    VTyPi (x, do_el env a, ClosTy (env', TyEl b))
+    | VTmUnitHat → VTyUnit
+    | VTmNeutral n → VTyEl n
+    | ...
+    \stopverb}
+
+
+\p{
+    For NbE, the semantic domains \code{vl_ty} and \code{vl_tm} represent weak head normal forms. A \code{neutral} is a head (a local or global variable) applied to a spine of eliminators (applications, projections), i.e. essentially a stuck computation that cannot reduce any further. The \code{neutral} type is shared between terms and types.
+}
+
+\p{
+    The only irreducible \code{El} is one applied to a neutral: \code{VTyEl of neutral}. When evaluating \code{El(t)}, if \code{t} reduces to a type code like \code{VTmPiHat}, it unfolds to \code{VTyPi}. If \code{t} is neutral, it stays stuck as \code{VTyEl}. Closures defer evaluation under binders until instantiation.
+}
